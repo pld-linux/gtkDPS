@@ -12,7 +12,7 @@ BuildRequires:	XFree86-devel >= 3.3.5
 BuildRequires:	gtk+-devel >= 1.2.6
 BuildRequires:	dgs-devel >= 0.5.9
 BuildRequires:	gettext-devel
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_aclocaldir	%(aclocal --print-ac-dir)
