@@ -1,68 +1,95 @@
-Summary:	gtkDPS - GTK+ front-end for DPS.
+Summary:	gtkDPS - GTK+ front-end for DPS
 Summary(pl):	gtkDPS - GTK+ front-end dla DPS
 Name:		gtkDPS
 Version:	0.3.3
 Release:	1
-Copyright:	GPL
-Group:		X11/Utils
-Group(pl):	X11/narzêdzia
-Source0:	ftp://ftp.gyve.org/pub/%name/%name-%version.tar.gz
+License:	GPL
+Group:		X11/Libraries
+Group(pl):	X11/Biblioteki
+Source0:	ftp://ftp.gyve.org/pub/gtkDPS/%{name}-%{version}.tar.gz
 BuildRequires:	XFree86-devel >= 3.3.5
 BuildRequires:	gtk+-devel >= 1.2.6
-BuildRequires:	dgs >= 0.5.9
+BuildRequires:	dgs-devel >= 0.5.9
+BuildRequires:	gettext-devel
 Buildroot:	/tmp/%{name}-%{version}-root
 
-%define	_prefix	/usr/X11R6
+%define		_prefix		/usr/X11R6
+%define		_aclocaldir	%(aclocal --print-ac-dir)
 
 %description
-gtkDPS is the set of functions, objects, and widgets to use DPS
-easily with GTK.
+gtkDPS is the set of functions, objects, and widgets to use DPS easily with
+GTK.
 
 %description -l pl
-gtkDPS jest zestawem funkji, obiektów i widgetów stworzonych do 
+gtkDPS jest zestawem funkji, obiektów i widgetów stworzonych do
 ³atwiejszego manipulowania DPSem z poziomu GTK.
 
 %package devel
-Summary:	gtkDPS devel	
+Summary:	gtkDPS devel
 Summary(pl):	gtkDPS devel
-Group:		X11/Development
-Group(pl):	X11/Programowanie
+Group:		X11/Development/Libraries
+Group(pl):	X11/Programowanie/Biblioteki
+Requires:	%{name} = %{version}
 
 %description devel
-Static library and include needed for user program.
+Headed files and documentation needed for compile programOB.
 
 %description -l pl devel
-Biblioteka linkowana statycznei, pliki nag³ówkowe niezbêdne do poprawej
-kompilacji programów.
+Pliki nag³ówkowe i inne narzedzia niezbêdne przy kompilowaniu proramów
+u¿ywajacych gtkDPS.
+
+%package static
+Summary:	gtkDPS static libraries
+Summary(pl):	Biblioteki statyczne gtkDPS
+Group:		X11/Development/Libraries
+Group(pl):	X11/Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
+
+%description static
+gtkDPS static libraries.
+
+%description -l pl static
+Biblioteki statyczne gtkDPS.
 
 %prep
 %setup -q
 
 %build
-./configure --prefix=%{_prefix}
-make RPM_OPT_FLAGS="$RPM_OPT_FLAGS"
+gettextize --copy --force
+LDFLAGS="-s"; export LDFLAGS
+%configure
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make prefix=$RPM_BUILD_ROOT%{_prefix} install
+make install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	m4datadir=%{_aclocaldir}
 
-gzip -9nf README NEWS TODO ChangeLog ABOUT-NLS HACKING
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so*.*
+
+gzip -9nf README NEWS TODO ChangeLog HACKING
+
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-
+%post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc {README,NEWS,TODO,ChangeLog,ABOUT-NLS,HACKING}.gz
-%attr(755,root,root) %{_bindir}/gtkDPS-config
-%attr(644,root,root) %{_libdir}/libgtkDPS.so*
+%attr(755,root,root) %{_libdir}/lib*.so*.*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(644,root,root) %{_includedir}/gtkDPS/*.h
-%attr(644,root,root) %{_libdir}/libgtkDPS.a
-%attr(644,root,root) %{_datadir}/aclocal/gtkDPS.m4
+%doc *.gz
+%attr(755,root,root) %{_bindir}/gtkDPS-config
+%attr(755,root,root) %{_libdir}/lib*.so
+%{_includedir}/gtkDPS
+%{_aclocaldir}/gtkDPS.m4
+
+%files static
+%defattr(644,root,root,755)
+%attr(644,root,root) %{_libdir}/lib*.a
