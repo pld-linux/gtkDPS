@@ -56,10 +56,11 @@ Biblioteki statyczne gtkDPS.
 %patch1 -p1
 
 %build
+rm -f missing
 %{__gettextize}
-aclocal
+%{__aclocal}
 %{__automake}
-%configure2_13
+%configure
 %{__make}
 
 %install
@@ -67,8 +68,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	m4datadir=%{_aclocaldir}
-
-gzip -9nf README NEWS TODO ChangeLog HACKING
 
 %find_lang %{name}
 
@@ -84,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz
+%doc README NEWS TODO ChangeLog HACKING
 %attr(755,root,root) %{_bindir}/gtkDPS-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/gtkDPS
