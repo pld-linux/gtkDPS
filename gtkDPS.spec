@@ -7,8 +7,8 @@ Copyright:	GPL
 Group:		X11/Utils
 Group(pl):	X11/narzêdzia
 Source0:	ftp://ftp.gyve.org/pub/%name/%name-%version.tar.gz
-#Patch0:		
-BuildRequires:	gtk-devel >= 1.2.6
+BuildRequires:	XFree86-devel >= 3.3.5
+BuildRequires:	gtk+-devel >= 1.2.6
 BuildRequires:	dgs >= 0.5.9
 Requires:	dgs-config
 Buildroot:	/tmp/%{name}-%{version}-root
@@ -19,7 +19,6 @@ Buildroot:	/tmp/%{name}-%{version}-root
 
 
 %description -l pl
- # optional package =====================
 
 %package devel
 Summary:	gtkDPS devel	
@@ -30,12 +29,9 @@ Group(pl):	X11/Programowanie
 %description devel
 
 %description -l pl devel
- # end of optional package ==============
 
 %prep
 %setup -q
-
-#%patch
 
 %build
 ./configure --prefix=%{_prefix}
@@ -51,20 +47,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc
-#%attr(,,)
-
-# optional package
+%attr(755,root,root) %{_bindir}/gtkDPS-config
+%attr(644,root,root) %{_libdir}/libgtkDPS.so*
 
 %files devel
 %defattr(644,root,root,755)
-%doc
-#%attr(,,)
-#end of optional package
-
-* %{date} PLD Team <pld-list@pld.org.pl>
-All below listed persons can be reached on <cvs_login>@pld.org.pl
-
-$Log: gtkDPS.spec,v $
-Revision 1.1  2000-03-17 10:37:03  cieciwa
-- first version of rpm,
-- build rpm.
+%attr(644,root,root) %{_includedir}/gtkDPS/*.h
+%attr(644,root,root) %{_libdir}/libgtkDPS.a
+%attr(644,root,root) %{_datadir}/aclocal/gtkDPS.m4
