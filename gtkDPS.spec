@@ -17,8 +17,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_aclocaldir	%(aclocal --print-ac-dir)
 
 %description
-gtkDPS is the set of functions, objects, and widgets to use DPS easily with
-GTK.
+gtkDPS is the set of functions, objects, and widgets to use DPS easily
+with GTK.
 
 %description -l pl
 gtkDPS jest zestawem funkji, obiektów i widgetów stworzonych do
