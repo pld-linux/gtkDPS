@@ -1,0 +1,12 @@
+diff -Nru gtkDPS-0.3.3/gtkDPS/Makefile.am gtkDPS-0.3.3.new/gtkDPS/Makefile.am
+--- gtkDPS-0.3.3/gtkDPS/Makefile.am	Sun Jan 16 23:00:55 2000
++++ gtkDPS-0.3.3.new/gtkDPS/Makefile.am	Thu Mar 23 09:40:45 2000
+@@ -40,6 +40,8 @@
+ gtkDPSintl.h		\
+ parseAFM.h
+ 
++libgtkDPS_la_LIBADD = $(DPS_LIBS) $(GTK_LIBS)
++
+ noinst_HEADERS = $(pswrap_gen_h)
+ 
+ EXTRA_DIST= $(pswrap_src) pswrap.mak
