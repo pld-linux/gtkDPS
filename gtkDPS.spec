@@ -14,6 +14,7 @@ Group(ru):	X11/Библиотеки
 Group(uk):	X11/Б╕бл╕отеки
 Source0:	ftp://ftp.gyve.org/pub/gtkDPS/%{name}-%{version}.tar.gz
 Patch0:		%{name}-libgtkDPS_la_LDFLAGS.patch
+Patch1:		%{name}-am_fix.patch
 BuildRequires:	gtk+-devel >= 1.2.6
 BuildRequires:	dgs-devel >= 0.5.9
 BuildRequires:	gettext-devel
@@ -72,12 +73,14 @@ Biblioteki statyczne gtkDPS.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 gettextize --copy --force
+aclocal
 automake -a -c
-%configure
+%configure2_13
 %{__make}
 
 %install
