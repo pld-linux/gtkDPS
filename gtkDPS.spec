@@ -1,5 +1,5 @@
-Summary:	gtkDPS - GTK+ front-end for DPS
-Summary(pl):	gtkDPS - front-end GTK+ dla DPS
+Summary:	gtkDPS - GTK+ frontend for DPS
+Summary(pl):	gtkDPS - frontend GTK+ dla DPS
 Name:		gtkDPS
 Version:	0.3.4
 Release:	2
@@ -14,6 +14,7 @@ BuildRequires:	automake
 BuildRequires:	dgs-devel >= 0.5.9
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+-devel >= 1.2.6
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -21,7 +22,7 @@ gtkDPS is a set of functions, objects, and widgets to use DPS easily
 with GTK.
 
 %description -l pl
-gtkDPS jest zestawem funkji, obiektów i widgetów stworzonych do
+gtkDPS jest zestawem funkcji, obiektów i widgetów stworzonych do
 ³atwiejszego u¿ywania DPS-a z poziomu GTK.
 
 %package devel
@@ -31,7 +32,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 
 %description devel
-Headed and other files needed for building programs that use gtkDPS.
+Header and other files needed for building programs that use gtkDPS.
 
 %description devel -l pl
 Pliki nag³ówkowe i inne niezbêdne przy kompilowaniu programów
@@ -54,16 +55,23 @@ Biblioteki statyczne gtkDPS.
 %patch0 -p1
 %patch1 -p1
 
+sed -e 's/AM_GTK_GNU_GETTEXT/AM_GNU_GETTEXT/' configure.in > configure.in.tmp
+mv -v configure.in.tmp configure.in
+rm -f acinclude.m4
+
 %build
-rm -f missing
+%{__libtoolize}
 %{__gettextize}
 %{__aclocal}
+%{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	m4datadir=%{_aclocaldir}
@@ -79,12 +87,13 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc ChangeLog NEWS README TODO
-%attr(755,root,root) %{_libdir}/lib*.so*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/gtkDPS-config
 %attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.la
 %{_includedir}/gtkDPS
 %{_aclocaldir}/gtkDPS.m4
 
