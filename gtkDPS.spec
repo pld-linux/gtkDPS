@@ -60,7 +60,7 @@ gettextize --copy --force
 LDFLAGS="-s"; export LDFLAGS
 automake
 %configure
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
