@@ -2,7 +2,7 @@ Summary:	gtkDPS - GTK+ front-end for DPS
 Summary(pl):	gtkDPS - GTK+ front-end dla DPS
 Name:		gtkDPS
 Version:	0.3.4
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
