@@ -5,12 +5,19 @@ Version:	0.3.4
 Release:	2
 License:	GPL
 Group:		X11/Libraries
+Group(de):	X11/Libraries
+Group(es):	X11/Bibliotecas
+Group(fr):	X11/Librairies
 Group(pl):	X11/Biblioteki
+Group(pt_BR):	X11/Bibliotecas
+Group(ru):	X11/âÉÂÌÉÏÔÅËÉ
+Group(uk):	X11/â¦ÂÌ¦ÏÔÅËÉ
 Source0:	ftp://ftp.gyve.org/pub/gtkDPS/%{name}-%{version}.tar.gz
-Patch0:		gtkDPS-libgtkDPS_la_LDFLAGS.patch
+Patch0:		%{name}-libgtkDPS_la_LDFLAGS.patch
 BuildRequires:	gtk+-devel >= 1.2.6
 BuildRequires:	dgs-devel >= 0.5.9
 BuildRequires:	gettext-devel
+BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -26,23 +33,35 @@ gtkDPS jest zestawem funkji, obiektów i widgetów stworzonych do
 
 %package devel
 Summary:	gtkDPS devel
-Summary(pl):	gtkDPS devel
+Summary(pl):	gtkDPS dla programistów
 Group:		X11/Development/Libraries
+Group(de):	X11/Entwicklung/Libraries
+Group(es):	X11/Desarrollo/Bibliotecas
+Group(fr):	X11/Development/Librairies
 Group(pl):	X11/Programowanie/Biblioteki
+Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(ru):	X11/òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
+Group(uk):	X11/òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name} = %{version}
 
 %description devel
 Headed files and documentation needed for compile programOB.
 
 %description -l pl devel
-Pliki nag³ówkowe i inne narzedzia niezbêdne przy kompilowaniu proramów
-u¿ywajacych gtkDPS.
+Pliki nag³ówkowe i inne narzedzia niezbêdne przy kompilowaniu
+programów u¿ywajacych gtkDPS.
 
 %package static
 Summary:	gtkDPS static libraries
 Summary(pl):	Biblioteki statyczne gtkDPS
 Group:		X11/Development/Libraries
+Group(de):	X11/Entwicklung/Libraries
+Group(es):	X11/Desarrollo/Bibliotecas
+Group(fr):	X11/Development/Librairies
 Group(pl):	X11/Programowanie/Biblioteki
+Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(ru):	X11/òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
+Group(uk):	X11/òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name}-devel = %{version}
 
 %description static
@@ -57,7 +76,7 @@ Biblioteki statyczne gtkDPS.
 
 %build
 gettextize --copy --force
-automake
+automake -a -c
 %configure
 %{__make}
 
