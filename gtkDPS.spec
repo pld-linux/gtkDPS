@@ -36,7 +36,7 @@ Header and other files needed for building programs that use gtkDPS.
 
 %description devel -l pl
 Pliki nag³ówkowe i inne niezbêdne przy kompilowaniu programów
-u¿ywajacych gtkDPS.
+u¿ywaj±cych gtkDPS.
 
 %package static
 Summary:	gtkDPS static libraries
