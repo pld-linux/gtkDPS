@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gyve.org/pub/gtkDPS/%{name}-%{version}.tar.gz
+# Source0-md5:	59fdb6b71bf75e61a0a3477583e9ab98
 Patch0:		%{name}-lib%{name}_la_LDFLAGS.patch
 Patch1:		%{name}-am_fix.patch
 BuildRequires:	gtk+-devel >= 1.2.6
