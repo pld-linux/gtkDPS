@@ -7,6 +7,7 @@ License:	GPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Source0:	ftp://ftp.gyve.org/pub/gtkDPS/%{name}-%{version}.tar.gz
+Patch0:		gtkDPS-libgtkDPS_la_LDFLAGS.patch
 BuildRequires:	XFree86-devel >= 3.3.5
 BuildRequires:	gtk+-devel >= 1.2.6
 BuildRequires:	dgs-devel >= 0.5.9
@@ -53,10 +54,12 @@ Biblioteki statyczne gtkDPS.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 gettextize --copy --force
 LDFLAGS="-s"; export LDFLAGS
+automake
 %configure
 make
 
