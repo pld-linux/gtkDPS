@@ -6,7 +6,7 @@ Release:	2
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gyve.org/pub/gtkDPS/%{name}-%{version}.tar.gz
-Patch0:		%{name}-libgtkDPS_la_LDFLAGS.patch
+Patch0:		%{name}-lib%{name}_la_LDFLAGS.patch
 Patch1:		%{name}-am_fix.patch
 BuildRequires:	gtk+-devel >= 1.2.6
 BuildRequires:	dgs-devel >= 0.5.9
@@ -34,7 +34,7 @@ Requires:	%{name} = %{version}
 %description devel
 Headed files and documentation needed for compile programOB.
 
-%description -l pl devel
+%description devel -l pl
 Pliki nag³ówkowe i inne narzedzia niezbêdne przy kompilowaniu
 programów u¿ywajacych gtkDPS.
 
@@ -47,7 +47,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 gtkDPS static libraries.
 
-%description -l pl static
+%description static -l pl
 Biblioteki statyczne gtkDPS.
 
 %prep
