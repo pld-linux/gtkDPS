@@ -10,7 +10,6 @@ Source0:	ftp://ftp.gyve.org/pub/%name/%name-%version.tar.gz
 BuildRequires:	XFree86-devel >= 3.3.5
 BuildRequires:	gtk+-devel >= 1.2.6
 BuildRequires:	dgs >= 0.5.9
-Requires:	dgs-config
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %define	_prefix	/usr/X11R6
