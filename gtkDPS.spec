@@ -58,7 +58,7 @@ Biblioteki statyczne gtkDPS.
 %build
 gettextize --copy --force
 aclocal
-automake -a -c
+automake -a -c -f
 %configure2_13
 %{__make}
 
