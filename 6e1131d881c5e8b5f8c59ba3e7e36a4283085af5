@@ -1,0 +1,13 @@
+- removed ABOUT-NLS from %doc,
+- added stripping shared libraries,
+- added using %configure macro and DESTDIR style %install,
+- added static subpackage,
+- removed SONAME symlinks,
+- gtkDPS-config and all %doc moved to devel,
+- corrected BuildRequires rules for dgs (require dgs-devel),
+- added %{_includedir}/gtkDPS to devel,
+- fixed %description for devel,
+- changed Group to X11/Libraries and to X11/Development/Libraries for devel
+  and static subpackages,
+- adedd i18n resources to main (addedc "BuildRequires: gettext-devel"),
+- added using %{_aclocaldir} macro.
