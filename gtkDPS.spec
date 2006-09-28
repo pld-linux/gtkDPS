@@ -29,7 +29,7 @@ gtkDPS jest zestawem funkcji, obiektów i widgetów stworzonych do
 Summary:	gtkDPS development files
 Summary(pl):	Pliki gtkDPS dla programistów
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header and other files needed for building programs that use gtkDPS.
@@ -42,7 +42,7 @@ u¿ywaj±cych gtkDPS.
 Summary:	gtkDPS static libraries
 Summary(pl):	Biblioteki statyczne gtkDPS
 Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 gtkDPS static libraries.
