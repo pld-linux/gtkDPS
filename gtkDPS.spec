@@ -1,5 +1,5 @@
 Summary:	gtkDPS - GTK+ frontend for DPS
-Summary(pl):	gtkDPS - frontend GTK+ dla DPS
+Summary(pl.UTF-8):   gtkDPS - frontend GTK+ dla DPS
 Name:		gtkDPS
 Version:	0.3.4
 Release:	2
@@ -21,33 +21,33 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 gtkDPS is a set of functions, objects, and widgets to use DPS easily
 with GTK.
 
-%description -l pl
-gtkDPS jest zestawem funkcji, obiekt體 i widget體 stworzonych do
-砤twiejszego u縴wania DPS-a z poziomu GTK.
+%description -l pl.UTF-8
+gtkDPS jest zestawem funkcji, obiekt贸w i widget贸w stworzonych do
+艂atwiejszego u偶ywania DPS-a z poziomu GTK.
 
 %package devel
 Summary:	gtkDPS development files
-Summary(pl):	Pliki gtkDPS dla programist體
+Summary(pl.UTF-8):   Pliki gtkDPS dla programist贸w
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header and other files needed for building programs that use gtkDPS.
 
-%description devel -l pl
-Pliki nag丑wkowe i inne niezb阣ne przy kompilowaniu program體
-u縴waj眂ych gtkDPS.
+%description devel -l pl.UTF-8
+Pliki nag艂贸wkowe i inne niezb臋dne przy kompilowaniu program贸w
+u偶ywaj膮cych gtkDPS.
 
 %package static
 Summary:	gtkDPS static libraries
-Summary(pl):	Biblioteki statyczne gtkDPS
+Summary(pl.UTF-8):   Biblioteki statyczne gtkDPS
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 gtkDPS static libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne gtkDPS.
 
 %prep
