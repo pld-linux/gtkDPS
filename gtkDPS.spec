@@ -1,5 +1,5 @@
 Summary:	gtkDPS - GTK+ frontend for DPS
-Summary(pl.UTF-8):   gtkDPS - frontend GTK+ dla DPS
+Summary(pl.UTF-8):	gtkDPS - frontend GTK+ dla DPS
 Name:		gtkDPS
 Version:	0.3.4
 Release:	2
@@ -27,7 +27,7 @@ gtkDPS jest zestawem funkcji, obiektów i widgetów stworzonych do
 
 %package devel
 Summary:	gtkDPS development files
-Summary(pl.UTF-8):   Pliki gtkDPS dla programistów
+Summary(pl.UTF-8):	Pliki gtkDPS dla programistów
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -40,7 +40,7 @@ używających gtkDPS.
 
 %package static
 Summary:	gtkDPS static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne gtkDPS
+Summary(pl.UTF-8):	Biblioteki statyczne gtkDPS
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
